@@ -2,10 +2,11 @@
 // http://localhost:3000/isolated/exercise/01.js
 
 import * as React from 'react'
+import PropTypes from 'prop-types';
 
-function Greeting() {
+function Greeting({initialName}) {
   // 💣 delete this variable declaration and replace it with a React.useState call
-  const [name, setName] = React.useState('');
+  const [name, setName] = React.useState(initialName);
 
   function handleChange(event) {
     // 🐨 update the name here based on event.target.value
@@ -23,8 +24,16 @@ function Greeting() {
   )
 }
 
+Greeting.defaultProps = {
+  initialName: '',
+};
+
+Greeting.propTypes = {
+  initialName: PropTypes.string,
+};
+
 function App() {
-  return <Greeting />
+  return <Greeting initialName="your name here" />
 }
 
 export default App
